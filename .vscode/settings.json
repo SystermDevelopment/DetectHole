@@ -1,0 +1,24 @@
+{
+    "editor.formatOnSave": false,
+    //"python.pythonPath": "C:\\Users\\naze_\\anaconda3\\envs\\keras\\python.exe",
+    "python.pythonPath": "%UserProfile%\\miniconda3\\envs\\keras\\python.exe",
+    "python.linting.pylintArgs": [
+        "--ignored-modules=numpy",
+        "--ignored-classes=numpy",
+        "--extension-pkg-whitelist=numpy,cv2",
+        "--disable=invalid-name,line-too-long"
+    ],
+    "python.autoComplete.extraPaths": [
+
+        "%UserProfile%\\miniconda3\\Lib\\site-packages"
+    ],
+    "python.autoComplete.addBrackets": true,
+    "python.condaPath": "%UserProfile%\\miniconda3\\Scripts",
+    "terminal.integrated.env.windows": {
+        "PATH": "%UserProfile%\\miniconda3\\Library\\bin;${env:PATH}"
+    },
+    "python.analysis.extraPaths": [
+        "%UserProfile%\\miniconda3\\Lib\\site-packages"
+    ],
+    "python.analysis.completeFunctionParens": true
+}
