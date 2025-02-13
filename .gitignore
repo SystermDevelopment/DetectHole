@@ -1,1 +1,16 @@
+# vertual environment
 venv/**/*
+
+# output setting files??
+networks/*/
+!networks/*.*
+
+# output file
+img_detect/*
+img_ng/*
+log/*
+
+# cache
+**/*.pyc
+**/*.pyo
+**/__pycache__/
