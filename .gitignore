@@ -1,1 +1,7 @@
 venv/**/*
+networks/*/
+!networks/*.*
+
+**/*.pyc
+**/*.pyo
+**/__pycache__/
