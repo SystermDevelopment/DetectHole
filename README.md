@@ -2,6 +2,21 @@
 
 リング内に穴が空いているかを判定する処理の開発を行う。
 
+## フォルダ構成
+本開発時のスコープのみ
+
+```plaintext
+├─doc                               ドキュメントフォルダ
+├─img_detect                        検知した画像の格納フォルダ
+│   ├─org_yyyyMMdd_hhmmss.jpg           穴検出時の読み込み画像
+│   ├─edge_yyyyMMdd_hhmmss.jpg          穴検出時の二値化画像
+│   └─hole_yyyyMMdd_hhmmss.jpg          穴検出時のリング描画画像
+├─img_ng                            NG画像の格納フォルダ
+│   └─yyyy-MM-dd                       日付ごとの格納
+├─main.py                           カメラ設定などの全体コントロール処理
+└─detect_holes.py                   穴検出処理
+```
+
 ## インストール手順
 
 1. 仮想環境の立ち上げ
@@ -29,6 +44,9 @@
 1. 画像をグレースケールに変換し、ガウシアンブラーを適用します。
 2. Cannyエッジ検出を使用してエッジを抽出します。
 3. RANSACアルゴリズムを使用してエッジ点から円を推定します。
+    * 参照[detect_holes.py ransac_circle_detection()](./detect_holes.py#59)
+
+参照：[detect_holes.py circle_ransac()](./detect_holes.py#L114)
 
 ### リング判定アルゴリズム
 
@@ -36,9 +54,13 @@
 2. クラスタリングを行い、小さな円を検出します。
 3. 検出された小さな円のペアの距離を計算し、条件を満たすペアを判定します。
 
-### 数式
+参照：[detect_holes.py detect_holes()](./detect_holes.py#L135)
 
-#### 円の中心と半径の計算
+### リング位置が中央あたりにある判定
+
+* 参照：[main.py capture_from_cam()](./main.py#330)
+
+### 円の中心と半径の計算 (RANSACアルゴリズム内で使用する)
 
 3点 \((x_1, y_1)\), \((x_2, y_2)\), \((x_3, y_3)\) から円の中心 \((cx, cy)\) と半径 \(r\) を求める。
 
@@ -57,6 +79,8 @@ $$
 $$
 r = \sqrt{(x_1 - cx)^2 + (y_1 - cy)^2}
 $$
+
+* 参照：[detect_holes.py fit_circle_3points()](./detect_holes.py#L21)
 
 ### 処理フロー
 
@@ -111,3 +135,4 @@ graph TD;
 
 ## References
 1. [Canny法によるエッジ検出 — OpenCV-Python Tutorials 1 documentation](https://labs.eecs.tottori-u.ac.jp/sd/Member/oyamada/OpenCV/html/py_tutorials/py_imgproc/py_canny/py_canny.html)
+
