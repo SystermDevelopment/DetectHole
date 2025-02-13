@@ -44,7 +44,7 @@
 1. 画像をグレースケールに変換し、ガウシアンブラーを適用します。
 2. Cannyエッジ検出を使用してエッジを抽出します。
 3. RANSACアルゴリズムを使用してエッジ点から円を推定します。
-    * 参照[detect_holes.py ransac_circle_detection()](./detect_holes.py#59)
+    * 参照[detect_holes.py ransac_circle_detection()](./detect_holes.py#L59)
 
 参照：[detect_holes.py circle_ransac()](./detect_holes.py#L114)
 
@@ -58,7 +58,7 @@
 
 ### リング位置が中央あたりにある判定
 
-* 参照：[main.py capture_from_cam()](./main.py#330)
+* 参照：[main.py capture_from_cam()](./main.py#L330)
 
 ### 円の中心と半径の計算 (RANSACアルゴリズム内で使用する)
 
